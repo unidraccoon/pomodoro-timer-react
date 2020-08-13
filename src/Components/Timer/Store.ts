@@ -83,6 +83,10 @@ export const timerState = createStore(timerLocalStorage.init(initTimer))
     return copy;
   })
   .on(decWorkTimer, (state) => {
+    if (state.workTime == 1){
+      let copy = Object.assign({}, state);
+      return copy;
+    }
     state.workTime -= 1;
     if (state.status == "work" && !state.launched) state.time -= 60;
     let copy = Object.assign({}, state);
@@ -95,6 +99,10 @@ export const timerState = createStore(timerLocalStorage.init(initTimer))
     return copy;
   })
   .on(decBreakTimer, (state) => {
+    if (state.breakTime == 1) {
+      let copy = Object.assign({}, state);
+      return copy;
+    }
     state.breakTime -= 1;
     if (state.status == "break" && !state.launched) state.time -= 60;
     let copy = Object.assign({}, state);
